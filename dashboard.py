@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -9,13 +10,16 @@ from sklearn.metrics import confusion_matrix
 sns.set(style='dark')
 
 # Load data
-data = pd.read_csv('Phising_dataset.csv', encoding='windows-1254')
+data = pd.read_csv('Phising_dataset.csv')
 
 # Page title
 st.title("Phishing Website Detection Dashboard")
 
 # Display dataset
-st.header("Dataset")
+phisingweb = data('Phising_dataset.csv')
+st.markdown('<h5 style="text-align:justify">Menampilkan Dataset Web Phishing</h5>', unsafe_allow_html=True)
+with st.expander('Phising_dataset', expanded=False):
+    st.dataframe(phisingweb)
 st.dataframe(data.head())
 
 # Phishing count pie chart
